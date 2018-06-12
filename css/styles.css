@@ -1,21 +1,23 @@
 h1 {
   color: #bc6903;
-  font-family: snell roundhand;
-  font-size: 5em;
+  font-family: 'Tangerine', cursive;
+  font-size: 7em;
   font-weight: bolder;
 }
 
 h3 {
   margin: 1%;
-  font-family: snell roundhand;
-  font-size: 2.1em;
+  font-family: 'Tangerine', cursive;
+  font-size: 3.1em;
 }
 
 body {
   background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   color: #cdcfd3;
+
 }
 
 .container {
