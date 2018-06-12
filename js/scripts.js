@@ -7,12 +7,12 @@ function TicketPrice (title, showtime, age){
   this.releaseDate = "";
 }
 
-// var solo = {date: "May 25 2018"};
-// var oceans = {date: "June 07 2018"};
-// var deadpool = {date: "May 18 2018"};
-// var avengers = {date: "April 27 2018"};
-//
-// var moviesReleaseDate = {movie: [solo, oceans, deadpool, avengers]};
+var solo = {name: "solo", date: "May 25 2018"};
+var oceans = {name: "oceans", date: "June 07 2018"};
+var deadpool = {name: "deadpool", date: "May 18 2018"};
+var avengers = {name: "avengers", date: "April 27 2018"};
+
+var moviesReleaseDate = {movies: [solo, oceans, deadpool, avengers]};
 
 TicketPrice.prototype.calculatePrice = function() {
   var price = 0;
@@ -38,16 +38,14 @@ $('#movie-ticket').submit(function(event){
    var ageGroup = $("#age-group").val();
    var perTicket = new TicketPrice(movieTitle, movieTime, ageGroup);
 
-//    moviesReleaseDate.movie.forEach(title) {
-// debugger;
-//      if (movieTitle === title){
-//        perTicket.releaseDate = movie.date;
-//      };
-//    };
+   moviesReleaseDate.movies.forEach(function(title){
+debugger;
+     if (movieTitle === title.name){
+       perTicket.releaseDate = title.date;
+     };
+   });
 
-   // $("button#calculate-price").click(function(){
      perTicket.price = perTicket.calculatePrice();
-   // });
 
    $("#ticket-price").text(perTicket.price);
  })
