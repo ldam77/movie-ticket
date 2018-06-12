@@ -5,6 +5,12 @@ h1 {
   font-weight: bolder;
 }
 
+h3 {
+  margin: 1%;
+  font-family: snell roundhand;
+  font-size: 2.1em;
+}
+
 body {
   background-image: url(../img/bg.png);
   background-size: cover;
