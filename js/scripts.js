@@ -1,31 +1,43 @@
 // Business logic
-function TicketPrice (title, showtime, age){
+function TicketPrice (title, showtime, age, date){
   this.title = title;
   this.showtime = showtime;
   this.age = age;
+  this.date = date;
   this.price = 0;
   this.releaseDate = "";
 }
 
-var solo = {name: "solo", date: "May 25 2018"};
-var oceans = {name: "oceans", date: "June 07 2018"};
-var deadpool = {name: "deadpool", date: "May 18 2018"};
-var avengers = {name: "avengers", date: "April 27 2018"};
+
+
+var solo = {name: "solo", date: "2018-05-25"};
+var oceans = {name: "oceans", date: "2018-06-07"};
+var deadpool = {name: "deadpool", date: "2018-05-18"};
+var avengers = {name: "avengers", date: "2018-04-27"};
+
 
 var moviesReleaseDate = {movies: [solo, oceans, deadpool, avengers]};
 
 TicketPrice.prototype.calculatePrice = function() {
-  var price = 0;
+  const REGULARPRICE = 15;
+  var discount = 0;
+  const MSINDAY = 86400000;
+  var releasedDate = Date.parse(this.releaseDate)/MSINDAY;
+  var selectedDate = Date.parse(this.date)/MSINDAY;
 
-  if(this.age === 'adult'){
-    price = 15;
-  } else if(this.age === 'senior'){
-    price = 10;
-  } else {
-    price = 5;
-  }
+  if(this.age === 'kid' || this.age === 'senior'){
+    return 10;
+  };
 
-    return price;
+  if((selectedDate - releasedDate) > 14){
+    discount += 3;
+  };
+
+  if(this.showtime < 17){
+    discount += 2;
+  };
+
+    return REGULARPRICE - discount;
 }
 
 
@@ -34,12 +46,13 @@ $(document).ready(function(){
 $('#movie-ticket').submit(function(event){
   event.preventDefault();
    var movieTitle = $("input:radio[name=movie-title]:checked").val();
-   var movieTime = $("#movie-time").val();
+   var movieTime = parseInt($("#movie-time").val());
    var ageGroup = $("#age-group").val();
-   var perTicket = new TicketPrice(movieTitle, movieTime, ageGroup);
+   var movieDate = $("#movie-date").val();
+   var perTicket = new TicketPrice(movieTitle, movieTime, ageGroup, movieDate);
 
    moviesReleaseDate.movies.forEach(function(title){
-debugger;
+
      if (movieTitle === title.name){
        perTicket.releaseDate = title.date;
      };
@@ -48,6 +61,7 @@ debugger;
      perTicket.price = perTicket.calculatePrice();
 
    $("#ticket-price").text(perTicket.price);
+   $('#buy-ticket').attr("href", "https://www.fandango.com/");
  })
 
 });

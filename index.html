@@ -27,7 +27,7 @@
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="movie-title" value="deadpool">
+            <input type="radio" name="movie-title" value="deadpool2">
             Deadpool 2
           </label>
         </div>
@@ -38,25 +38,32 @@
           </label>
         </div>
         <h2>Choose your showtime:</h2>
-        <select class="form-control" id="movie-time">
+        <select id="movie-time">
           <option value="12">12:00pm</option>
           <option value="15">3:00pm</option>
           <option value="18">6:00pm</option>
           <option value="21">9:00pm</option>
         </select>
         <h2>Choose your age range:</h2>
-        <select class="form-control" id="age-group">
+        <select id="age-group">
           <option value="kid">under 13</option>
           <option value="adult">13-65</option>
           <option value="senior">65+</option>
         </select>
+        <div class="form-group">
+          <h2>Movie date:</h2>
+          <input id="movie-date" type="date">
+        </div>
+
         <button type="submit" class="btn btn-info">Show ticket price!</button>
+        <br>
+
       </form>
 
       <div class="output-area">
         <h2>Price: $ <span id="ticket-price"></span> per ticket</h2>
       </div>
-
+      <a class="btn btn-warning" id="buy-ticket" href="#" target=_blank>Purchase ticket here</a>
     </div>
   </body>
 </html>

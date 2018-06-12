@@ -1,0 +1,18 @@
+h1 {
+  color: #bc6903;
+  font-family: snell roundhand;
+  font-size: 5em;
+  font-weight: bolder;
+}
+
+body {
+  background-image: url(../img/bg.png);
+  background-size: cover;
+  background-attachment: fixed;
+  color: #cdcfd3;
+}
+
+.container {
+  margin-top: 27%;
+  margin-left: 9%;
+}
